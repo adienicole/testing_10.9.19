@@ -1,0 +1,12 @@
+{
+  "REI Standard": {
+    "order": "#FEFE53",
+    "quote": "#E23480",
+    "on order": "#80BFFF",
+    "do not order": "#A621CF",
+    "incomplete": "#FBB922",
+    "complete": "#86D052",
+    "did not use": "#549CB8",
+    "surface": "#FC600A"
+  }
+}

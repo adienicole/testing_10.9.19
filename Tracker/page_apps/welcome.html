@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+  - Tracker
+  - Copyright 2018 James Houck, REI Automation, Inc. All rights reserved.
+-->
+<html lang="en">
+<head>
+  <title>Tracker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tracker.css">
+</head>
+<body class="bg-dark">
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <button class="navbar-toggler" type="button"
+    data-toggle="collapse" data-target="#nav-header">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="nav-header" class="collapse navbar-collapse">
+    <ul class="nav nav-pills mr-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#modal-help">Help</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#modal-about">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Modal Icon -->
+<div class="modal fade" id="modal-icon" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker Settings</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <p>Sign in to access user settings.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Help -->
+<div class="modal fade" id="modal-help" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker Help</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Reset Password</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal About -->
+<div class="modal fade" id="modal-about" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker About</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Tracker 3.0.0</h5>
+        <p>Tracker is a parts managment system.</p>
+        <p>Copyright 2018 James Houck, REI Automation, Inc.<br>
+        All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tracker Message -->
+<div id="modal-message" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker Message</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="modal-message-text" class="modal-body bg-light text-dark"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-7 col-lg-8">
+        <h1 class="display-4">Tracker</h1>
+        <h5>The REI team will collaborate to create innovative, robust solutions for our customers while demonstrating kindness, initiative and dedication.</h5>
+      </div>
+      <div class="col-sm-1 col-md-1 col-lg-1"></div>
+      <div class="col-sm-5 col-md-4 col-lg-3">
+        <!-- Login Form -->
+        <form>
+          <div class="form-group">
+            <input type="text" id="inp-username" class="form-control" placeholder="Username">
+            <input type="password" id="inp-password" class="form-control" placeholder="Password">
+          </div>
+          <button type="button" id="btn-start" class="btn btn-lg btn-success btn-block">START</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cards -->
+<div class="container">
+<div class="row">
+
+  <div class="col">
+    <div class="card text-white bg-success mt-5">
+      <div class="card-header text-center">COLLABORATIVE</div>
+      <div class="card-body">
+        <p class="card-text">Be willing to risk sharing your ideas</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card text-white bg-success mt-5">
+      <div class="card-header text-center">INNOVATIVE</div>
+      <div class="card-body">
+        <p class="card-text">Drive change & continuous improvement</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card text-white bg-success mt-5">
+      <div class="card-header text-center">ROBUST</div>
+      <div class="card-body">
+        <p class="card-text">Demand high quality and excellence</p>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- .row -->
+<div class="row">
+
+  <div class="col">
+    <div class="card text-white bg-success mt-5">
+      <div class="card-header text-center">KINDNESS</div>
+      <div class="card-body">
+        <p class="card-text">Treat others as you would like to be treated</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card text-white bg-success mt-5">
+      <div class="card-header text-center">INITIATIVE</div>
+      <div class="card-body">
+        <p class="card-text">Be flexible with a can-do attitude</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card text-white bg-success mt-5">
+      <div class="card-header text-center">DEDICATION</div>
+      <div class="card-body">
+        <p class="card-text">Be a reliable go-getter</p>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- .row -->
+</div> <!-- .container -->
+
+<footer class="container-fluid fixed-bottom bg-dark">
+  <div class="footer-text">REI Automation, Inc.</div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/models.js"></script>
+<script src="js/welcome.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--
+  - Tracker
+  - Copyright 2018 James Houck, REI Automation, Inc. All rights reserved.
+-->
+<html lang="en">
+<head>
+  <title>Tracker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tracker.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <button class="navbar-toggler" type="button"
+    data-toggle="collapse" data-target="#nav-header">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="nav-header" class="collapse navbar-collapse">
+    <button id="btn-side-toggle" class="btn btn-outline-secondary btn-sm" type="button"><span class="navbar-toggler-icon"></span></button>
+    <ul class="nav nav-pills mr-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#modal-icon">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#modal-export-parts">Export</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#modal-help">Help</a>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <select id="select-project" class="custom-select mr-sm-2">
+        <option value="null">Search Projects</option>
+      </select>
+      <select id="select-view" class="custom-select mr-sm-2">
+      </select>
+      <button id="btn-find" class="btn btn-success mr-sm-2" type="button">FIND</button>
+      <button id="btn-reset" class="btn btn-success mr-sm-2" type="button">RESET</button>
+      <button id="btn-insert" class="btn btn-success mr-sm-2" type="button">INSERT</button>
+      <div class="dropdown">
+        <button id="btn-more" class="btn btn-success dropdown-toggle mr-sm-2" type="button" data-toggle="dropdown">MORE</button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#modal-add-node">Add Assembly</a>
+          <a class="dropdown-item" href="#modal-import-parts">Import Parts</a>
+          <a class="dropdown-item" href="#modal-status-fill">Fill Status</a>
+        </div>
+      </div>
+      <button id="btn-save" class="btn btn-success mr-sm-2" type="button" disabled>SAVE</button>
+    </form>
+  </div>
+</nav>
+
+<!-- Modal Icon -->
+<div class="modal fade" id="modal-icon" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Navigator Settings</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Projects</h5>
+        <form class="form">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="projects-show-all">
+            <label class="custom-control-label" for="projects-show-all">Show all projects</label>
+          </div>
+        </form>
+        <h5 class="mt-3">Display</h5>
+        <form class="form">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="check-show-all">
+            <label class="custom-control-label" for="check-show-all">Show all parts</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="check-highlight-rows">
+            <label class="custom-control-label" for="check-highlight-rows">Highlight parts by status</label>
+          </div>
+          <div class="form-group mt-3">
+            <label for="select-highlight-schema">Highlight Color Pallet</label>
+            <select class="form-control" id="select-highlight-schema">
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Help -->
+<div class="modal fade" id="modal-help" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker Help</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Filter</h5>
+        <p>The filter displays rows when it finds a match anywhere in the column text. Use the <strong>^</strong> character at the beginning of the filter input to find an exact match.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal About -->
+<div class="modal fade" id="modal-about" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker About</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Tracker 3.0.0</h5>
+        <p>Tracker is a parts managment system.</p>
+        <p>Copyright 2018 James Houck, REI Automation, Inc.<br>
+        All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Export Parts -->
+<div class="modal fade" id="modal-export-parts" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Export Parts</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <form class="form">
+          <div class="form-group mt-3">
+            <label for="select-export-schema">Select export schema.</label>
+            <select class="form-control" id="select-export-schema">
+                <option>Purchasing</option>
+            </select>
+          </div>
+        </form>
+        <table id="export-parts-table" class="table">
+          <thead>
+            <tr>
+              <th scope="col">MFG</th>
+              <th scope="col">PART NUM</th>
+              <th scope="col">QTY</th>
+              <th scope="col">DESCRIPTION</th>
+            </tr>
+          </thead>
+          <tbody id="export-parts-rows">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Add Node -->
+<div class="modal fade" id="modal-add-node" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Add Assembly</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <form class="form">
+          <div>Inserts new assembly into selected assembly.</div>
+          <h3 id="add-node-parent"></h3>
+          <div class="form-group">
+            <label for="add-node-number">New Assembly Number</label>
+            <input type="text" class="form-control" id="add-node-name" placeholder="Enter number">
+            <div id="add-node-name-alert" class="text-danger"></div>
+          </div>
+          <div class="form-group">
+            <label for="add-node-desc">New Assembly Description</label>
+            <input type="text" class="form-control" id="add-node-desc" placeholder="Enter description">
+            <div id="add-node-desc-alert" class="text-danger"></div>
+          </div>
+          <button id="add-node-insert" class="btn btn-success" type="button">INSERT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Add Multiples Nodes -->
+<div class="modal fade" id="modal-add-multi-nodes" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Add Multiple Assemblies</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <div>Add assemblies into:</div>
+        <h3 id="add-multi-nodes-parent"></h3>
+        <ul id="add-multi-nodes-list" class="list-group"></ul>
+        <form class="form">
+          <button id="add-multi-nodes-save" class="btn btn-success mt-3" type="button">SAVE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Import Parts -->
+<div class="modal fade" id="modal-import-parts" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Import Parts</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <form class="form">
+          <div>Import parts from a .csv file and insert them into selected assembly.</div>
+          <h3 id="import-parts-parent"></h3>
+          <div class="form-group">
+            <label for="import-parts-file">Select file to import:</label>
+            <input type="file" class="form-control-file" id="import-parts-file">
+          </div>
+          <!--
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="import-parts-all">
+            <label class="custom-control-label" for="import-parts-all">Import entire project.</label>
+          </div>
+          -->
+          <div id="import-parts-file-alert" class="text-danger"></div>
+          <button id="import-parts-load" class="btn btn-success mt-3" type="button">LOAD</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Status Fill -->
+<div class="modal fade" id="modal-status-fill" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Fill Status</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <p>Fill blank status column with "order".</p>
+        <button id="btn-status-fill" class="btn btn-success mt-3" type="button"disabled>Fill</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tracker Message -->
+<div id="modal-message" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker Message</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="modal-message-text" class="modal-body bg-light text-dark"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="container-fluid">
+<div class="row">
+
+<!-- Navigation Sidebar -->
+<div id="nav-sidebar" class="nav-sidebar col-sm-3 col-md-2 d-none d-sm-block">
+  <div id="sidebar" class="list-group"></div>
+</div>
+
+<!-- Main Content -->
+<main id="main-content" role="main" class="col-sm-9 col-md-10 ml-sm-auto">
+
+  <!-- Grid Header -->
+  <div id="grid-header" class="sticky-top grid-header"></div>
+
+  <!-- Grid Body -->
+  <div id="grid-body" class="grid-body"></div>
+
+<footer class="fixed-bottom bg-dark text-light">
+  <div class="footer-text">REI Automation, Inc.</div>
+</footer>
+
+</main>
+
+</div> <!-- .container-fluid -->
+</div> <!-- .row -->
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/models.js"></script>
+<script src="js/navigator.js"></script>
+<script src="js/papaparse.min.js"></script>
+
+</body>
+</html>

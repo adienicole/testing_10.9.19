@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+  - Tracker
+  - Copyright 2018 James Houck, REI Automation, Inc. All rights reserved.
+-->
+<html lang="en">
+<head>
+  <title>Tracker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tracker.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <button class="navbar-toggler" type="button"
+    data-toggle="collapse" data-target="#nav-header">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="nav-header" class="collapse navbar-collapse">
+    <button id="btn-side-toggle" class="btn btn-outline-secondary btn-sm" type="button"><span class="navbar-toggler-icon"></span></button>
+    <ul class="nav nav-pills mr-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#modal-icon">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#modal-help">Help</a>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <div class="dropdown">
+        <button id="btn-more" class="btn btn-success dropdown-toggle mr-sm-2" type="button" data-toggle="dropdown">ADMIN</button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#modal-manage-project">Manage Project</a>
+          <a class="dropdown-item" href="#modal-manage-user">Manage User</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
+<!-- Modal Icon -->
+<div class="modal fade" id="modal-icon" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Navigator Settings</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Projects</h5>
+        <form class="form">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="projects-show-all">
+            <label class="custom-control-label" for="projects-show-all">Show all projects</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Manage User -->
+<div class="modal fade" id="modal-manage-user" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Manage User</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>User</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Manage Project -->
+<div class="modal fade" id="modal-manage-project" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Manage Project</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Project</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Help -->
+<div class="modal fade" id="modal-help" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker Help</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Manager</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal About -->
+<div class="modal fade" id="modal-about" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker About</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark">
+        <h5>Tracker 3.0.0</h5>
+        <p>Tracker is a parts managment system.</p>
+        <p>Copyright 2018 James Houck, REI Automation, Inc.<br>
+        All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tracker Message -->
+<div id="modal-message" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-light">Tracker Message</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="modal-message-text" class="modal-body bg-light text-dark"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="container-fluid">
+<div class="row">
+
+<!-- Navigation Sidebar -->
+<div id="nav-sidebar" class="nav-sidebar col-sm-3 col-md-2 d-none d-sm-block">
+  <div id="sidebar" class="list-group"></div>
+</div>
+
+<!-- Main Content -->
+<main id="main-content" role="main" class="col-sm-9 col-md-10 ml-sm-auto">
+
+  <!-- Grid Header -->
+  <div id="grid-header" class="sticky-top grid-header"></div>
+
+  <!-- Grid Body -->
+  <div id="grid-body" class="grid-body"></div>
+
+<footer class="fixed-bottom bg-dark text-light">
+  <div class="footer-text">REI Automation, Inc.</div>
+</footer>
+
+</main>
+
+</div> <!-- .container-fluid -->
+</div> <!-- .row -->
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/manager-components.js"></script>
+<script src="js/manager-models.js"></script>
+<script src="js/manager.js"></script>
+
+</body>
+</html>

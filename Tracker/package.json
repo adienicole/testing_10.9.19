@@ -1,0 +1,34 @@
+{
+  "name": "tracker",
+  "version": "1.0.0",
+  "description": "Track project information from design to assembly.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesH1015/Tracker.git"
+  },
+  "keywords": [
+    "express",
+    "REST",
+    "applications",
+    "mondodb",
+    "database",
+    "web"
+  ],
+  "author": "James Houck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesH1015/Tracker/issues"
+  },
+  "homepage": "https://github.com/JamesH1015/Tracker#readme",
+  "dependencies": {
+    "body-parser": "~1.18.3",
+    "cookie-parser": "~1.4.3",
+    "express": "~4.16.3",
+    "jsonwebtoken": "~8.3.0",
+    "mongodb": "~3.1.3"
+  }
+}

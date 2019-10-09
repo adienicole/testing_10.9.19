@@ -1,0 +1,10 @@
+{
+  "name": "Tracker",
+  "port": 8080,
+  "token": "melekalikimaka",
+  "apps": "/page_apps",
+  "mongo": {
+    "path": "mongodb://127.0.0.1:27017/",
+    "database": "tracker"
+  }
+}
